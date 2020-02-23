@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        <p>You are already authenticated ! Please logout to switch account.</p>
+
+    {% else %}
+
+        {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+
+    {%endif%}
+
+{% endblock %}
