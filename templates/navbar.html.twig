@@ -4,9 +4,12 @@
     </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link {% if current_menu is defined and current_menu == 'home' %}active{%endif%}" href="{{ path('home') }}">Home</a>
-      <a class="nav-item nav-link {% if current_menu is defined and current_menu == 'login' %}active{%endif%}" href="{{ path('login') }}">Login</a>
-      <a class="nav-item nav-link" {% if is_granted('IS_AUTHENTICATED_FULLY') %}null;{% else %}hidden{%endif%} href="{{ path('sign_out') }}">Logout</a>
+
+            <span class="navbar-brand mb-0 h1">Navbar</span>
+
+      <a class="nav-item nav-link {% if current_menu is defined and current_menu == 'home' %}active{%endif%}" href="{{ path('home') }}">Page Accueil</a>
+      <a class="nav-item nav-link {% if current_menu is defined and current_menu == 'login' %}active{%endif%}" href="{{ path('login') }}">Se connecter</a>
+      <a class="nav-item nav-link" {% if is_granted('IS_AUTHENTICATED_FULLY') %}null;{% else %}hidden{%endif%} href="{{ path('sign_out') }}">Se déconnecter</a>
     </div>
   </div>
 </nav>
