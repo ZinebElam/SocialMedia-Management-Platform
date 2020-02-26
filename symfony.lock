@@ -82,7 +82,10 @@
         "version": "2.1.15"
     },
     "friendsofsymfony/user-bundle": {
-        "version": "2.2.x-dev"
+        "version": "v2.1.2"
+    },
+    "fzaninotto/faker": {
+        "version": "v1.9.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
