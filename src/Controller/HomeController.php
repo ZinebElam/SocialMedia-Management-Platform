@@ -16,14 +16,5 @@
               'controller_name' => 'HomeController',
           ]);
       }
-      /**
-     * @Route("/", name="home")
-     */
-    public function indexAction()
-    {
-        $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('home.html.twig',[
-            'current_menu' => 'home'
-        ]);
-    }
+   
   }
