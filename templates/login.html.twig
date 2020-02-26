@@ -15,7 +15,12 @@
         {{ form_row(form.password) }}
         {{ form_row(form.submit) }}
         {{ form_end(form) }}
-
+        <a  href="{{ path('app_forgotten_password') }}">Forgotten password</a>
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
     {%endif%}
 
 {% endblock %}
