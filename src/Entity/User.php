@@ -61,7 +61,7 @@ class User implements UserInterface
     /**
      * @var array
      *
-     * @ORM\Column(name="role", type="simple_array", length=0, nullable=false)
+     * @ORM\Column(name="role", type="simple_array", length=0, nullable=true)
      */
     private $role;
 
@@ -77,6 +77,7 @@ class User implements UserInterface
      */
     public function __construct()
     {
+        $this->role = array('ROLE_USER');
         $this->socialMedia = new ArrayCollection();
     }
 
