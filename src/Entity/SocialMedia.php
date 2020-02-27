@@ -31,24 +31,15 @@ class SocialMedia
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="client_id", type="string", length=255, nullable=false)
+     * @ORM\Column(type="integer")
      */
     private $clientId;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="client_secret", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
-    private $clientSecret;
+    private $clientsecret;
 
-
-
-    /**
-     * Constructor
-     */
     public function __construct()
     {
         $this->user = new ArrayCollection();
@@ -71,30 +62,29 @@ class SocialMedia
         return $this;
     }
 
-    public function getClientId(): ?string
+    public function getClientId(): ?int
     {
         return $this->clientId;
     }
 
-    public function setClientId(string $clientId): self
+    public function setClientId(int $clientId): self
     {
         $this->clientId = $clientId;
 
         return $this;
     }
 
-    public function getClientSecret(): ?string
+    public function getClientsecret(): ?string
     {
-        return $this->clientSecret;
+        return $this->clientsecret;
     }
 
-    public function setClientSecret(string $clientSecret): self
+    public function setClientsecret(string $clientsecret): self
     {
-        $this->clientSecret = $clientSecret;
+        $this->clientsecret = $clientsecret;
 
         return $this;
     }
-
     /**
      * @return Collection|User[]
      */
@@ -102,23 +92,4 @@ class SocialMedia
     {
         return $this->user;
     }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->user->contains($user)) {
-            $this->user->removeElement($user);
-        }
-
-        return $this;
-    }
-
 }
