@@ -1,5 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User: sha512
     providers:
         in_memory: { memory: ~ }
         our_db_provider:
