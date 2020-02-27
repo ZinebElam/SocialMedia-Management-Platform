@@ -39,31 +39,24 @@ class User implements UserInterface
     private $lastname;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
     /**
-     * @var string le token qui servira lors de l'oubli de mot de passe
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $resetToken;
+    private $resettoken;
 
     /**
-     * @var array
-     *
-     * @ORM\Column(name="role", type="simple_array", length=0, nullable=true)
+     * @ORM\Column(type="simple_array", nullable=true)
      */
-    private $role;
+    private $role = [];
 
     /**
      * @var Collection
@@ -73,13 +66,18 @@ class User implements UserInterface
     private $socialMedia;
 
     /**
-     * Constructor
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposition", mappedBy="userSubmit")
      */
+    private $propositions;
+
+
     public function __construct()
     {
         $this->role = array('ROLE_USER');
         $this->socialMedia = new ArrayCollection();
+        $this->propositions = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -134,42 +132,29 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getResettoken(): ?string
+    {
+        return $this->resettoken;
+    }
+
+    public function setResettoken(?string $resettoken): self
+    {
+        $this->resettoken = $resettoken;
+
+        return $this;
+    }
+
     public function getRoles(): ?array
     {
         return $this->role;
     }
 
-    public function setRole(array $role): self
+    public function setRole(?array $role): self
     {
         $this->role = $role;
 
         return $this;
     }
-
-    /**
-     * @return Collection|SocialMedia[]
-     */
-    public function getSocialNetwork(): Collection
-    {
-        return $this->socialMedia;
-    }
-
-
-
-    public function getResetToken(): ?string
-    {
-        return $this->resetToken;
-    }
-
-    public function setResetToken(string $resetToken): self
-    {
-        $this->resetToken = $resetToken;
-        return $this;
-    }
-
-
-
-
     public function getSalt()
     {
         return null;
@@ -179,17 +164,39 @@ class User implements UserInterface
     {
         return $this->email;
     }
-
-    /**
-     * Removes sensitive data from the user.
-     *
-     * This is important if, at any given point, sensitive information like
-     * the plain-text password is stored on this object.
-     */
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
     }
 
+    /**
+     * @return Collection|Proposition[]
+     */
+    public function getPropositions(): Collection
+    {
+        return $this->propositions;
+    }
 
+    public function addProposition(Proposition $proposition): self
+    {
+        if (!$this->propositions->contains($proposition)) {
+            $this->propositions[] = $proposition;
+            $proposition->setUserSubmit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposition(Proposition $proposition): self
+    {
+        if ($this->propositions->contains($proposition)) {
+            $this->propositions->removeElement($proposition);
+            // set the owning side to null (unless already changed)
+            if ($proposition->getUserSubmit() === $this) {
+                $proposition->setUserSubmit(null);
+            }
+        }
+
+        return $this;
+    }
 }
