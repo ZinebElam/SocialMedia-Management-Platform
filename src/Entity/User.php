@@ -199,4 +199,32 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|SocialMedia[]
+     */
+    public function getSocialMedia(): Collection
+    {
+        return $this->socialMedia;
+    }
+
+    public function addSocialNetwork(SocialMedia $socialMedia): self
+    {
+        if (!$this->socialMedia->contains($socialMedia)) {
+            $this->socialMedia[] = $socialMedia;
+            $socialMedia->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSocialNetwork(SocialMedia $socialMedia): self
+    {
+        if ($this->socialMedia->contains($socialMedia)) {
+            $this->socialMedia->removeElement($socialMedia);
+            $socialMedia->removeUser($this);
+        }
+
+        return $this;
+    }
 }
