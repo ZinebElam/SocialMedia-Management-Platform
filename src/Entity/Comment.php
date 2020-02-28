@@ -21,9 +21,9 @@ class Comment
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text", length=0, nullable=false)
+     * @ORM\Column(name="propositionComment", type="text", length=0, nullable=false)
      */
-    private $contentComment;
+    private $propositionComment;
 
     /**
      * @var \User
@@ -40,7 +40,7 @@ class Comment
      *
      * @ORM\ManyToOne(targetEntity="Proposition")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="content_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="proposition_id", referencedColumnName="id")
      * })
      */
     private $proposition;
@@ -50,14 +50,17 @@ class Comment
         return $this->id;
     }
 
-    public function getContentComment(): ?string
+    /**
+     * @return string|null
+     */
+    public function getPropositionComment(): ?string
     {
-        return $this->contentComment;
+        return $this->propositionComment;
     }
 
-    public function setContentComment(string $contentComment): self
+    public function setPropositionComment(string $propositionComment): self
     {
-        $this->contentComment = $contentComment;
+        $this->propositionComment = $propositionComment;
 
         return $this;
     }
