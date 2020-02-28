@@ -8,7 +8,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * SocialMedia
- *
  * @ORM\Table(name="social_media")
  * @ORM\Entity
  */
