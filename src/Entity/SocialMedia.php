@@ -108,5 +108,5 @@ class SocialMedia
 
         return $this;
     }
-
 }
+

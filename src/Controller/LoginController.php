@@ -28,7 +28,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/signout", name="sign_out")
+     * @Route("/signout", name="sign_out")
      * @param AuthenticationUtils $authenticationUtils
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
