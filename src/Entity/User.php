@@ -208,7 +208,7 @@ class User implements UserInterface
         return $this->socialMedia;
     }
 
-    public function addSocialNetwork(SocialMedia $socialMedia): self
+    public function addSocialMedia(SocialMedia $socialMedia): self
     {
         if (!$this->socialMedia->contains($socialMedia)) {
             $this->socialMedia[] = $socialMedia;
@@ -218,7 +218,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function removeSocialNetwork(SocialMedia $socialMedia): self
+    public function removeSocialMedia(SocialMedia $socialMedia): self
     {
         if ($this->socialMedia->contains($socialMedia)) {
             $this->socialMedia->removeElement($socialMedia);
