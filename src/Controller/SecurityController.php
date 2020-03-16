@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\LoginUserType;
+use App\Form\LoginType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,20 +16,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/login", name="login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @return Response
-     */
-    public function login(AuthenticationUtils $authenticationUtils)
-    {
-        $user = new User();
-        $form = $this->createForm(LoginUserType::class, $user);
-        return $this->render('login.html.twig', [
-            'error' => $authenticationUtils->getLastAuthenticationError(),
-            'form' => $form->createView()
-        ]);
-    }
 
     /**
      * @Route("/forgotten_Password", name="app_forgotten_password")
