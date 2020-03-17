@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposition{% endblock %}
+
+{% block body %}
+    <div class="container" id="down">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h1 class="post-title">Proposition index</h1>
+
+                <table class="table table-bordered"  >
+                    <thead class="thead-dark">
+                    <tbody>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <td>{{ proposition.id }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <td>{{ proposition.title }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Description</th>
+                        <td>{{ proposition.description }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">File</th>
+                        <td>{{ proposition.file }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">SubmitUser</th>
+                        <td>{{ proposition.userSubmit.firstname ? proposition.userSubmit.firstname : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">SubmitDate</th>
+                        <td>{{ proposition.submitDate ? proposition.submitDate|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">ApprovalDate</th>
+                        <td>{{ proposition.approvalDate ? proposition.approvalDate|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">PublicationDate</th>
+                        <td>{{ poposition.publicationDate ? proposition.publicationDate|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <button type="submit" class="btn btn-outline-primary">
+                    <a href="{{ path('proposition_index') }}"> <span class="btn-label"><i class="fas fa-arrow-left"></i></span>
+                        back to list</a></button>
+
+                <h3>Review</h3>
+                <button class="btn btn-success" value="1">Approved</button>
+                <button class="btn btn-danger" value="2">Rejected</button>
+
+                {{ include('proposition/_delete_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
