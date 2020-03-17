@@ -56,7 +56,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="simple_array", nullable=true)
      */
-    private $role = [];
+    private $roles = [];
 
     /**
      * @var Collection
@@ -65,17 +65,14 @@ class User implements UserInterface
      */
     private $socialMedia;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Proposition", mappedBy="userSubmit")
-     */
-    private $propositions;
+
 
 
     public function __construct()
     {
-        $this->role = array('ROLE_USER');
+        $this->roles = array('ROLE_USER');
         $this->socialMedia = new ArrayCollection();
-        $this->propositions = new ArrayCollection();
+
     }
 
 
@@ -146,12 +143,12 @@ class User implements UserInterface
 
     public function getRoles(): ?array
     {
-        return $this->role;
+        return $this->roles;
     }
 
-    public function setRole(?array $role): self
+    public function setRoles(array $roles): self
     {
-        $this->role = $role;
+        $this->roles = $roles;
 
         return $this;
     }
@@ -169,36 +166,7 @@ class User implements UserInterface
         // TODO: Implement eraseCredentials() method.
     }
 
-    /**
-     * @return Collection|Proposition[]
-     */
-    public function getPropositions(): Collection
-    {
-        return $this->propositions;
-    }
 
-    public function addProposition(Proposition $proposition): self
-    {
-        if (!$this->propositions->contains($proposition)) {
-            $this->propositions[] = $proposition;
-            $proposition->setUserSubmit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProposition(Proposition $proposition): self
-    {
-        if ($this->propositions->contains($proposition)) {
-            $this->propositions->removeElement($proposition);
-            // set the owning side to null (unless already changed)
-            if ($proposition->getUserSubmit() === $this) {
-                $proposition->setUserSubmit(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection|SocialMedia[]
