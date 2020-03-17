@@ -92,7 +92,15 @@ class Proposition
      */
     private $userPublish;
 
+    /**
+     * @ORM\Column(type="smallint", options={"comment":"0:submitted, 1: accepted, 2: refused, 3:published"})
+     */
+    private $statut;
 
+    public function __construct()
+    {
+        $this->statut = 0;
+    }
 
 
     public function getId(): ?int
@@ -204,6 +212,17 @@ class Proposition
     public function setUserPublish(?User $userPublish): self
     {
         $this->userPublish = $userPublish;
+
+        return $this;
+    }
+    public function getStatut(): ?int
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(int $statut): self
+    {
+        $this->statut = $statut;
 
         return $this;
     }

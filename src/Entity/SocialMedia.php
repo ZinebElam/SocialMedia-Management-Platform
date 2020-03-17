@@ -73,14 +73,14 @@ class SocialMedia
         return $this;
     }
 
-    public function getClientsecret(): ?string
+    public function getClientSecret(): ?string
     {
         return $this->clientsecret;
     }
 
-    public function setClientsecret(string $clientsecret): self
+    public function setClientSecret(string $clientSecret): self
     {
-        $this->clientsecret = $clientsecret;
+        $this->clientSecret = $clientSecret;
 
         return $this;
     }
