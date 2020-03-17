@@ -38,21 +38,21 @@ class Proposition
     /**
      * @var string
      *
-     * @ORM\Column(name="file", type="blob", length=0, nullable=false)
+     * @ORM\Column(name="file", type="string", length=255, nullable=true)
      */
     private $file;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="submit_date", type="datetime", nullable=false)
+     * @ORM\Column(name="submit_date", type="datetime", nullable=true)
      */
     private $submitDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="approval_date", type="datetime", nullable=false)
+     * @ORM\Column(name="approval_date", type="datetime", nullable=tru)
      */
     private $approvalDate;
 

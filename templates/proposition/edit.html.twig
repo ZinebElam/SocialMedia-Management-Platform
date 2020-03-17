@@ -4,9 +4,9 @@
 
 {% block body %}
     <h1>Edit Proposition</h1>
-    {{ include('proposition/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('proposition/form.html.twig', {'button_label': 'Update'}) }}
     <button type="submit" class="btn btn-outline-success">
         <a href="{{ path('proposition_index') }}"> <span class="btn-label"><i class="fas fa-sign-in-alt"></i></span>
             back to list</a></button>
-    {{ include('proposition/_delete_form.html.twig') }}
+    {{ include('proposition/delete_form.html.twig') }}
 {% endblock %}
