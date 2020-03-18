@@ -52,14 +52,14 @@ class Proposition
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="approval_date", type="datetime", nullable=tru)
+     * @ORM\Column(name="approval_date", type="datetime", nullable=true)
      */
     private $approvalDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="publication_date", type="datetime", nullable=false)
+     * @ORM\Column(name="publication_date", type="datetime", nullable=true)
      */
     private $publicationDate;
 
